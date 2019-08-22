@@ -1,0 +1,25 @@
+doctype html
+html
+	head
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible' content='IE=edge')
+		meta(name='viewport' content='width=device-width, initial-scale=1.0')
+
+	body
+
+		main
+
+			- const messages = getMessages()
+			if messages.info
+				each msg in messages.info
+					.info= msg
+			if messages.error
+				each msg in messages.error
+					.error= msg
+
+		p
+			a(href='/redirect') Test redirection
+		p
+			a(href='/error') Test error
+		p
+			a(href='/multiple') Test multiple messages

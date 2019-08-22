@@ -1,0 +1,9 @@
+.error{
+	color: red;
+}
+.no-image-record{
+	height: 32px;
+	padding: 6px;
+	text-align: center !important;
+    float: none !important;
+}

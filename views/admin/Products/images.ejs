@@ -1,0 +1,120 @@
+<link rel="stylesheet" href="<%=nodeSiteUrl%>/css/colorbox.min.css" />
+<style>
+div#navbar {
+    height: 45px !important;
+}
+</style>
+<%- include('../elements/header'); %> 
+<!-- page specific plugin styles -->
+ 
+<div class="main-content">
+        <div class="main-content-inner"> 
+            <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+                <ul class="breadcrumb">
+                    <li> <i class="ace-icon fa fa-tachometer"></i> <a href="<%=nodeAdminUrl%>/Dashboard">Dashboard</a> </li>
+                    <li class="active"><a href="<%=nodeAdminUrl%>/<%=controller%>/list"> Products </a> </li>
+                    <li class="active">List</li>
+                </ul>  
+            </div> 
+            <div class="page-content"> 
+                    <%- include ../elements/flash.ejs %>    
+                <div class="page-header col-xs-12">
+                    <div class="col-xs-6"> 
+                            <h1>  <%=controller%> List <small>    </h1> 
+                    </div>
+                    <form id="imageForm" method="post" action="<%=nodeAdminUrl%>/<%=controller%>/images/<%=id%>" enctype="multipart/form-data">
+                        <input style="display:none" type="file" name="images" multiple id="file"> 
+                        <div class="col-xs-6"> 
+                            <a href="#"> <button class="btn btn-info pull-right" id="OpenImgUpload" type="button">   Upload Images   </button></a> 
+                        </div> 
+                    </form>
+
+                </div>  
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <!-- PAGE CONTENT BEGINS -->
+                        <div>
+                            <ul class="ace-thumbnails clearfix">
+                                <% if(data.length > 0){  
+                                    for(var i = 0;i < data.length;i++) { %>
+                                <li>
+                                    <a href="<%=nodeSiteUrl%>/upload/product_images/<%=data[i].image%>" data-rel="colorbox">
+                                        <% if(data[0].image){  %>
+                                            <img width="150" height="150" alt="150x150" src="<%=nodeSiteUrl%>/upload/product_images/<%=data[i].image%>" /> 
+                                        <% } %> 
+                                    </a> 
+                                    <div class="tools tools-top"> 
+                                        <a onclick="return confirm('Are you sure you want to set this image as default image ?')" href="<%=nodeAdminUrl%>/<%=controller%>/setDefaultImage/<%=data[i].id%>/<%=data[i].product_id%>" title="Set as default Image">
+                                            <i class="ace-icon fa fa-paperclip"></i>
+                                        </a> 
+                                        
+                                        <a  onclick="return confirm('Are you sure you want to delete this ?')" href="<%=nodeAdminUrl%>/<%=controller%>/deleteImage/<%=data[i].id%>" >
+                                            <i class="ace-icon fa fa-times red"></i> 
+                                        </a>
+                                    </div>
+                                </li>
+                                <% }  }else{ %>
+                                    <li class="no-image-record">  No record found  </li> 
+                            <% } %>   
+                            </ul>
+                        </div><!-- PAGE CONTENT ENDS -->
+                    </div><!-- /.col -->
+                </div> 
+
+
+  
+            </div><!-- /.page-content -->
+        </div>
+    </div><!-- /.main-content -->
+
+
+    
+     
+ 
+    
+
+<%- include('../elements/footer'); %> 
+ 
+<!-- page specific plugin scripts -->
+<script src="<%=nodeSiteUrl%>/js/jquery.colorbox.min.js"></script>
+
+<script type="text/javascript">
+jQuery(function($) {
+
+    $('#OpenImgUpload').click(function(){ $('#file').trigger('click'); });
+    $('#file').change(function() {
+        $('#imageForm').submit();
+    }); 
+    var $overflow = '';
+    var colorbox_params = {
+    rel: 'colorbox',
+    reposition:true,
+    scalePhotos:true,
+    scrolling:false,
+    previous:'<i class="ace-icon fa fa-arrow-left"></i>',
+    next:'<i class="ace-icon fa fa-arrow-right"></i>',
+    close:'&times;',
+    current:'{current} of {total}',
+    maxWidth:'100%',
+    maxHeight:'100%',
+    onOpen:function(){
+        $overflow = document.body.style.overflow;
+        document.body.style.overflow = 'hidden';
+    },
+    onClosed:function(){
+        document.body.style.overflow = $overflow;
+    },
+    onComplete:function(){
+        $.colorbox.resize();
+    }
+    };
+
+    $('.ace-thumbnails [data-rel="colorbox"]').colorbox(colorbox_params);
+    $("#cboxLoadingGraphic").html("<i class='ace-icon fa fa-spinner orange fa-spin'></i>");//let's add a custom loading icon
+ 
+    $(document).one('ajaxloadstart.page', function(e) {
+    $('#colorbox, #cboxOverlay').remove();
+    });
+})
+</script>

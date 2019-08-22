@@ -1,0 +1,35 @@
+{
+  "name": "capp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.4",
+    "cors": "^2.8.5",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-fileupload": "^1.1.4",
+    "express-flash-messages": "^0.1.1",
+    "express-session": "^1.16.1",
+    "express-validator": "^5.3.1",
+    "localStorage": "^1.0.4",
+    "moment": "^2.24.0",
+    "mysql2": "^1.6.5",
+    "nodemailer": "^6.1.0",
+    "nodemon": "^1.18.10",
+    "pug": "^2.0.3",
+    "randomstring": "^1.1.5",
+    "request": "^2.88.0",
+    "sequelize": "^5.8.6",
+    "sequelize-cli": "^5.4.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "author": "Rakesh Vishnoi",
+  "license": "ISC"
+}

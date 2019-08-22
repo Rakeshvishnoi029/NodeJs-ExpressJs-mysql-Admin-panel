@@ -1,0 +1,141 @@
+<div class="footer">
+        <div class="footer-inner">
+            <div class="footer-content">
+                <span class="bigger-120">
+                    <span class="blue bolder">Construction</span>
+                    Application &copy; 2019-2020
+                </span> 
+                &nbsp; &nbsp;
+                <span class="action-buttons">
+                    <a href="#">
+                        <i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
+                    </a> 
+                    <a href="#">
+                        <i class="ace-icon fa fa-facebook-square text-primary bigger-150"></i>
+                    </a> 
+                    <a href="#">
+                        <i class="ace-icon fa fa-rss-square orange bigger-150"></i>
+                    </a>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+        <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+    </a>
+</div><!-- /.main-container -->
+
+<!-- basic scripts -->
+
+<!--[if !IE]> -->
+<script src="<%=nodeSiteUrl%>/js/jquery-2.1.4.min.js"></script>
+
+<!-- <![endif]-->
+
+<!--[if IE]>
+<script src="assets/js/jquery-1.11.3.min.js"></script>
+<![endif]-->
+<script type="text/javascript">
+    if('ontouchstart' in document.documentElement) document.write("<script src='<%=nodeSiteUrl%>/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+</script>
+<script src="<%=nodeSiteUrl%>/js/bootstrap.min.js"></script>
+
+<!-- page specific plugin scripts -->
+
+<!--[if lte IE 8]>
+  <script src="assets/js/excanvas.min.js"></script>
+<![endif]-->
+
+
+
+<!-- ace scripts -->
+<script src="<%=nodeSiteUrl%>/js/ace-elements.min.js"></script>
+<script src="<%=nodeSiteUrl%>/js/ace.min.js"></script>
+ 
+ 
+
+<!-- inline scripts related to this page -->
+<script type="text/javascript">
+    jQuery(function($) {
+          
+        $('.sparkline').each(function(){
+            var $box = $(this).closest('.infobox');
+            var barColor = !$box.hasClass('infobox-dark') ? $box.css('color') : '#FFF';
+            $(this).sparkline('html',
+                             {
+                                tagValuesAttribute:'data-values',
+                                type: 'bar',
+                                barColor: barColor ,
+                                chartRangeMin:$(this).data('min') || 0
+                             });
+        });
+    
+     
+     
+    
+        /////////////////////////////////////
+        $(document).one('ajaxloadstart.page', function(e) {
+            $tooltip.remove();
+        }); 
+        var d1 = [];
+        for (var i = 0; i < Math.PI * 2; i += 0.5) {
+            d1.push([i, Math.sin(i)]);
+        }
+    
+        var d2 = [];
+        for (var i = 0; i < Math.PI * 2; i += 0.5) {
+            d2.push([i, Math.cos(i)]);
+        }
+    
+        var d3 = [];
+        for (var i = 0; i < Math.PI * 2; i += 0.2) {
+            d3.push([i, Math.tan(i)]);
+        } 
+        $('#recent-box [data-rel="tooltip"]').tooltip({placement: tooltip_placement});
+        function tooltip_placement(context, source) {
+            var $source = $(source);
+            var $parent = $source.closest('.tab-content')
+            var off1 = $parent.offset();
+            var w1 = $parent.width();
+    
+            var off2 = $source.offset();
+            //var w2 = $source.width();
+    
+            if( parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2) ) return 'right';
+            return 'left';
+        }
+    
+    
+        $('.dialogs,.comments').ace_scroll({
+            size: 300
+        });
+        
+        
+        //Android's default browser somehow is confused when tapping on label which will lead to dragging the task
+        //so disable dragging when clicking on label
+         
+    
+         
+    
+    
+        //show the dropdowns on top or bottom depending on window height and menu position
+        $('#task-tab .dropdown-hover').on('mouseenter', function(e) {
+            var offset = $(this).offset();
+    
+            var $w = $(window)
+            if (offset.top > $w.scrollTop() + $w.innerHeight() - 100) 
+                $(this).addClass('dropup');
+            else $(this).removeClass('dropup');
+        });
+    
+    })
+</script>
+
+
+
+
+
+
+</body>
+</html>

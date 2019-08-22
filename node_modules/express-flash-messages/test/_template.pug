@@ -1,0 +1,75 @@
+//- Default functions & variables
+include __helper-functions
+include __default-variables
+
+//- Override default variables if needed
+block vars
+
+doctype html
+html
+	head
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible' content='IE=edge')
+		meta(name='viewport' content='width=device-width, initial-scale=1.0')
+		if url
+			link(rel='canonical' href=`https://escaladesports.com${url}`)
+
+		block title
+			if pageTitle
+				title #{pageTitle} | #{websiteName}
+			else
+				title #{websiteName} | #{description}
+		meta(name='description' content=description)
+
+		each style in styles
+			if (style.indexOf('//') !== -1)
+				link(rel='stylesheet' href=style)
+			else
+				link(rel='stylesheet' href=`/${style}?v=${deployTime}`)
+
+	body(class=bodyClasses.join(' '))
+
+		include _header
+
+		main
+
+
+			//- Display server messages
+			if messages && messages.general
+				each msg in messages.general
+					.constrain.message= msg
+
+			//- Display server messages from session
+			if session && session.messages && session.messages.server
+				if typeof session.messages.server === 'string'
+					.constrain.message= session.messages.server
+				else
+					each msg in session.messages.server
+						.constrain.message= msg
+
+			//- Display error messages
+			if errors && errors.general
+				if typeof errors.general === 'string'
+					.constrain.error= errors.general
+				else
+					each msg in errors.general
+						.constrain.error= msg
+
+			block content
+				p Default content.
+
+
+		include _footer
+		
+		if noCart.indexOf(url) === -1
+			dialog.cart
+				include _cart
+
+		each script in scripts
+			if (script.indexOf('//') !== -1)
+				script(src=script)
+			else
+				script(src=`/${script}?v=${deployTime}`)
+
+
+

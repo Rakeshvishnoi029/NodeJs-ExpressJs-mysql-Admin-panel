@@ -1,0 +1,25 @@
+Commands : Node JS API Development : 
+
+- npm install                                    # install node js
+- npm install --save-dev nodemon                 # Execute on runtime
+- npm install --save mysql2                      # Install Mysql 
+- npm install express --save                     # Install Express
+- npm install express-validator                  # Validation on request 
+- npm install --save express-fileupload          # For file uploading 
+- npm install moment                             # Insatll modent js for use of date time 
+- npm install body-parser                        # To parse post data 
+- npm install cors                               # Connet express 
+- npm install nodemailer                         # To send mail via smtp
+- npm install request                            # Use 3rd part web API 
+
+// Admin setup module 
+npm i sequelize 
+ or
+npm install --save sequelize-cli
+npm install --save sequelize                     # For install sequelize 
+npm install ejs                                  # For Express template file extension 
+npm install pug --save                           # Template engine 
+npm i express-session 				 # Store session data
+npm i express-flash-messages                     # Showing flash messages
+
+npm i bcrypt

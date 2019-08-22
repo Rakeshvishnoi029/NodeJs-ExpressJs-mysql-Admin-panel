@@ -1,0 +1,21 @@
+
+<% var messages = getMessages(); %>
+<% if(messages.success){ %>
+ 
+<div class="alert alert-block alert-success">
+    <button type="button" class="close" data-dismiss="alert">
+        <i class="ace-icon fa fa-times"></i>
+    </button>  
+    <i class="ace-icon fa fa-check green"></i>  
+        <%=messages.success%>  
+</div> 
+<%}else if(messages.error){%>  
+    <div class="alert alert-block alert-danger">
+        <button type="button" class="close" data-dismiss="alert">
+            <i class="ace-icon fa fa-times"></i>
+        </button>  
+        <i class="ace-icon fa fa-close red"></i>  <%=messages.error%>  
+    </div>  
+<%}%>  
+
+ 
