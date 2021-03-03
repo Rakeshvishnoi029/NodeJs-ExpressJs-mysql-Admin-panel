@@ -19,7 +19,7 @@
     "mysql2": "^1.6.5",
     "nodemailer": "^6.1.0",
     "nodemon": "^1.18.10",
-    "pug": "^2.0.3",
+    "pug": "^3.0.1",
     "randomstring": "^1.1.5",
     "request": "^2.88.0",
     "sequelize": "^5.8.6",
